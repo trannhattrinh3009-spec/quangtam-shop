@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Shop thể thao số 1 Việt Nam</title>
+    <link rel="icon" type="image/png" href="logo.jpg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- PAGE LOADER -->
+    <div id="pageLoader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="main-header" id="mainHeader">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#home-page" class="navigate-btn"><i class="fas fa-gem"></i> TheThao</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Mở menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home-page" class="nav-link-item active">Trang Chủ</a></li>
+                <li><a href="#products-page" class="nav-link-item">Sản Phẩm</a></li>
+                <li><a href="#collections-page" class="nav-link-item">Bộ Sưu Tập</a></li>
+                <li><a href="#deals-page" class="nav-link-item">Khuyến Mãi</a></li>
+                <li><a href="#blog-page" class="nav-link-item">Blog</a></li>
+                <li><a href="#about-page" class="nav-link-item">Về Chúng Tôi</a></li>
+                <li><a href="#contact-page" class="nav-link-item">Liên Hệ</a></li>
+            </ul>
+            <div class="nav-icons">
+                <a href="#" class="icon-link" id="searchIconBtn" aria-label="Tìm kiếm"><i class="fas fa-search"></i></a>
+                <div id="user-account-section">
+                    <a href="#" class="icon-link" id="accountIconBtn" aria-label="Tài khoản"><i class="fas fa-user-circle"></i></a>
+                </div>
+                <a href="#" class="icon-link" id="cartIcon" aria-label="Giỏ hàng">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- SEARCH OVERLAY -->
+    <div id="searchOverlay" class="search-overlay">
+        <span class="close-search-btn" id="closeSearchOverlayBtn">&times;</span>
+        <div class="search-overlay-content">
+            <input type="text" id="searchInput" placeholder="Nhập tên sản phẩm, danh mục...">
+            <div id="searchResultsContainer">
+                <p>Nhập ít nhất 2 ký tự để tìm kiếm.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCOUNT MODAL (LOGIN/REGISTER) -->
+    <div id="accountModal" class="modal">
+       <div class="modal-content" style="max-width: 450px;">
+           <span class="close-btn" id="closeAccountModalBtn">&times;</span>
+           <div class="account-form-container">
+                <div class="form-tabs">
+                    <button class="tab-link active" data-form="loginForm">Đăng Nhập</button>
+                    <button class="tab-link" data-form="registerForm">Đăng Ký</button>
+                </div>
+
+                <!-- LOGIN FORM -->
+                <form id="loginForm" class="account-form active">
+                    <div class="modal-header"><h2>Chào mừng trở lại!</h2></div>
+                    <div class="form-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="vidu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="loginPassword">Mật khẩu</label>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                    </div>
+                    <p class="form-error" id="loginError"></p>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Đăng Nhập</button>
+                </form>
+
+                <!-- REGISTER FORM -->
+                <form id="registerForm" class="account-form">
+                    <div class="modal-header"><h2>Tạo Tài Khoản Mới</h2></div>
+                    <div class="form-group">
+                        <label for="registerFullName">Họ và Tên</label>
+                        <input type="text" id="registerFullName" placeholder="Nguyễn Văn An" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerEmail">Email</label>
+                        <input type="email" id="registerEmail" placeholder="vidu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="registerPassword">Mật khẩu</label>
+                        <input type="password" id="registerPassword" placeholder="Ít nhất 6 ký tự" required>
+                    </div>
+                     <div class="form-group">
+                        <label for="registerConfirmPassword">Xác nhận mật khẩu</label>
+                        <input type="password" id="registerConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+                    </div>
+                    <p class="form-error" id="registerError"></p>
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Đăng Ký</button>
+                </form>
+            </div>
+       </div>
+   </div>
+
+    <main id="pageContainer" style="padding-top: 70px;">
+
+        <!-- HOME PAGE -->
+        <div id="home-page" class="page-content active-page">
+            <div id="hero-banner-container">
+                <!-- Hero banner will be loaded here by JS -->
+                <section class="hero">
+                    <div class="hero-content-wrapper">
+                        <div class="hero-text">
+                            <h1>Nâng Tầm Phong Cách Thể Thao</h1>
+                            <p>Khám phá những bộ sưu tập đồ thể thao độc đáo, chất liệu cao cấp và thiết kế dẫn đầu xu hướng. Tự tin thể hiện cá tính cùng shop!</p>
+                            <a href="#products-page" class="btn btn-primary navigate-btn">Khám Phá Ngay <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <section class="container scroll-reveal">
+                <h2 class="animated-title"><i class="fas fa-star"></i><span class="title-text">Sản Phẩm Nổi Bật</span></h2>
+                <div class="products-grid" id="featured-products-grid">
+                    <!-- Featured products will be loaded here by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- PRODUCTS PAGE -->
+        <div id="products-page" class="page-content">
+            <section id="products-section-content" class="container">
+                <div class="product-filters">
+                    <h2 class="animated-title"><i class="fas fa-tags"></i><span class="title-text">Tất Cả Sản Phẩm</span></h2>
+                    <div class="filter-controls">
+                        <select id="categoryFilter" class="filter-select" aria-label="Lọc theo danh mục">
+                            <option value="all">Tất cả danh mục</option>
+                            <!-- Categories will be loaded here by JS -->
+                        </select>
+                        <select id="sortFilter" class="filter-select" aria-label="Sắp xếp sản phẩm">
+                            <option value="default">Sắp xếp mặc định</option>
+                            <option value="price-asc">Giá: Thấp đến Cao</option>
+                            <option value="price-desc">Giá: Cao đến Thấp</option>
+                            <option value="newest">Mới nhất</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="products-grid" id="all-products-grid">
+                    <!-- All products will be loaded here by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- COLLECTIONS PAGE -->
+        <div id="collections-page" class="page-content">
+            <section id="collections-content" class="container scroll-reveal">
+                <h2 class="animated-title"><i class="fas fa-layer-group"></i><span class="title-text">Bộ Sưu Tập Độc Quyền</span></h2>
+                <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">Những thiết kế thể thao giới hạn, công nghệ tiên tiến và phong cách vượt trội, chỉ có tại shop.</p>
+                <div id="collections-grid">
+                    <!-- Collections will be loaded here by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- DEALS PAGE -->
+        <div id="deals-page" class="page-content">
+            <section id="deals-content" class="container scroll-reveal" style="background-color: var(--secondary-color); color:white; padding: 3rem 2rem; border-radius: var(--border-radius-main); margin-top: 2rem; margin-bottom: 2rem;">
+                <h2 class="animated-title" style="color:white;"><i class="fas fa-fire"></i><span class="title-text">Ưu Đãi Hot Trong Tuần</span></h2>
+                <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">Đừng bỏ lỡ cơ hội sở hữu những item thể thao yêu thích với giá cực kỳ hấp dẫn!</p>
+                 <div class="products-grid" id="deals-grid">
+                    <!-- Deals will be loaded here by JS -->
+                 </div>
+            </section>
+        </div>
+
+        <!-- BLOG PAGE -->
+        <div id="blog-page" class="page-content">
+            <section id="blog-content" class="container scroll-reveal">
+                <h2 class="animated-title"><i class="fas fa-newspaper"></i><span class="title-text">Blog Thể Thao & Phong Cách</span></h2>
+                <p style="text-align:center; max-width:700px; margin:0 auto 2rem auto;">Cập nhật những bài viết mới nhất về xu hướng, mẹo tập luyện, dinh dưỡng và các sản phẩm thể thao nổi bật.</p>
+                <div class="blog-grid" id="blog-grid">
+                    <!-- Blog posts will be loaded here by JS -->
+                </div>
+            </section>
+        </div>
+
+        <!-- ABOUT US PAGE -->
+        <div id="about-page" class="page-content">
+            <section id="about-content" class="container scroll-reveal">
+                <h2 class="animated-title"><i class="fas fa-users"></i><span class="title-text">Về Shop</span></h2>
+                <div style="max-width: 800px; margin: 0 auto; text-align: center; background: var(--card-bg-color); padding: 2.5rem; border-radius: var(--border-radius-main); box-shadow: var(--shadow-light);">
+                    <img src="https://lh3.googleusercontent.com/d/1T8UwDRAwdfJfTcUar9FfYMOIm1FHtL8Z" alt=" Người Sáng Lập" style="border-radius: 50%; margin-bottom: 1.5rem; width: 150px; height: 150px; object-fit: cover; box-shadow: var(--shadow-strong);">
+                    <h3>Người Sáng Lập</h3>
+                    <p style="font-size: 1.1rem; color: var(--light-text-color); margin-bottom: 1.5rem;">"Đam mê thể thao, kiến tạo phong cách."</p>
+                    <p style="text-align: justify; margin-bottom: 1rem;">Chào mừng bạn đến với SHOP - điểm đến lý tưởng cho những ai đam mê thể thao và phong cách sống năng động! Tôi là <strong>Shop</strong>, người sáng lập và điều hành shop với một sứ mệnh đơn giản: mang đến những sản phẩm thể thao chất lượng cao, thiết kế thời thượng và giá cả phải chăng cho cộng đồng yêu thể thao Việt Nam.</p>
+                    <p style="text-align: justify; margin-bottom: 1.5rem;">Tại SHOP, chúng tôi không chỉ bán sản phẩm, chúng tôi chia sẻ đam mê và đồng hành cùng bạn trên hành trình nâng cao sức khỏe, vượt qua giới hạn bản thân và khẳng định dấu ấn cá nhân. Mỗi sản phẩm đều được lựa chọn kỹ lưỡng, đảm bảo tiêu chuẩn chất lượng và cập nhật những xu hướng mới nhất.</p>
+                    <p><em>Cảm ơn bạn đã ghé thăm và tin tưởng Shop!</em></p>
+                </div>
+            </section>
+        </div>
+
+        <!-- CONTACT PAGE -->
+        <div id="contact-page" class="page-content">
+            <section id="contact-content" class="container scroll-reveal">
+                <h2 class="animated-title"><i class="fas fa-headset"></i><span class="title-text">Liên Hệ </span></h2>
+                <p style="text-align:center; max-width:700px; margin:0 auto 2.5rem auto;">Chúng tôi luôn sẵn sàng lắng nghe và hỗ trợ bạn. Đừng ngần ngại liên hệ nếu bạn có bất kỳ câu hỏi hoặc yêu cầu nào!</p>
+                <div>
+                    <div class="contact-form-container">
+                        <h4>Gửi Lời Nhắn Cho Chúng Tôi</h4>
+                        <form id="contactForm">
+                            <div>
+                                <label for="contactName">Họ và Tên:</label>
+                                <input type="text" id="contactName" name="contactName" placeholder="Ví dụ: Nguyễn Văn An" required>
+                            </div>
+                            <div>
+                                <label for="contactEmail">Email:</label>
+                                <input type="email" id="contactEmail" name="contactEmail" placeholder="vidu@email.com" required>
+                            </div>
+                            <div>
+                                <label for="contactMessage">Lời nhắn của bạn:</label>
+                                <textarea id="contactMessage" name="contactMessage" rows="5" placeholder="Nội dung bạn muốn trao đổi..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:100%; padding: 0.9em;"><i class="fas fa-paper-plane"></i> Gửi Tin Nhắn</button>
+                        </form>
+                    </div>
+                    <div class="contact-info-container">
+                        <h4>Thông Tin Liên Hệ Trực Tiếp</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> <strong>Địa chỉ:</strong> 123 Đường Thể Thao, P. Sporty, Q. Năng Động, TP.HCM</p>
+                        <p><i class="fas fa-phone-alt"></i> <strong>Hotline:</strong> <a href="tel:0877706152">0877 706 152</a> (Shop)</p>
+                        <p><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:letam1082003@gmail.com">letam1082003@gmail.com</a></p>
+                        <p><i class="fas fa-clock"></i> <strong>Giờ làm việc:</strong> 08:30 - 21:30 (T2 - CN)</p>
+                        <div class="map-container">
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.447740269883!2d106.68248241532906!3d10.77699509232085!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752f3a9d9d6173%3A0x24b3c690a1ac951!2zQmVuaCBXaW5oIFRob+G6p2kgSOG7kyBDaGkgTWluaA!5e0!3m2!1svi!2s!4v1678888888888!5m2!1svi!2s" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- PRODUCT DETAILS MODAL -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header"><h2 id="modalProductName">Tên Sản Phẩm</h2></div>
+            <div class="modal-body">
+                <div class="modal-product-image-col">
+                    <img id="modalProductImage" src="" alt="Hình ảnh sản phẩm chi tiết">
+                </div>
+                <div class="modal-product-details-col">
+                    <p class="modal-price" id="modalProductPrice">0₫</p>
+                    <p id="modalProductDescription">Mô tả chi tiết sản phẩm...</p>
+                    <div id="modal-options-container">
+                        <!-- Size and color options will be loaded here by JS -->
+                    </div>
+                    <div>
+                        <label for="modalQuantityInput">Số Lượng:</label>
+                        <input type="number" id="modalQuantityInput" value="1" min="1" max="10">
+                    </div>
+                    <button class="btn btn-primary add-to-cart-modal-btn" style="width:100%; margin-top:1.5rem; padding: 1em;">
+                        <i class="fas fa-cart-plus"></i> Thêm vào Giỏ Hàng
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BLOG DETAIL MODAL -->
+    <div id="blogDetailModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header"><h2 id="blogModalTitle">Tiêu đề bài viết</h2></div>
+            <div class="modal-body" style="flex-direction:column;">
+                <img id="blogModalImage" src="" alt="Ảnh bài viết" >
+                <div class="blog-meta">
+                    <i class="fas fa-calendar-alt"></i> <span id="blogModalDate"></span> |
+                    <i class="fas fa-user"></i> <span id="blogModalAuthor"></span>
+                </div>
+                <div id="blogModalContent">Nội dung chi tiết bài viết...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CART MODAL -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-header"><h2><i class="fas fa-shopping-bag"></i> Giỏ Hàng Của Bạn</h2></div>
+            <div class="modal-body" style="flex-direction:column;">
+                <div id="cart-items-container">
+                    <div id="cart-items-list">
+                        <!-- Cart items will be loaded here by JS -->
+                    </div>
+                    <p id="emptyCartMsg" style="display:none;"><i class="fas fa-sad-tear"></i>Giỏ hàng của bạn đang trống trơn!</p>
+                </div>
+                <div id="cart-summary" style="display:none;">
+                    <div id="cart-total">Tổng cộng: <span id="cartTotalAmount">0</span>₫</div>
+                    <hr style="margin: 1.5rem 0;">
+                    <div id="checkout-section">
+                        <h3><i class="fas fa-receipt"></i> Thông Tin Thanh Toán</h3>
+                        <form id="checkout-form">
+                            <div>
+                                <label for="customerName">Họ và Tên:</label>
+                                <input type="text" id="customerName" placeholder="Nguyễn Văn A" required>
+                            </div>
+                            <div>
+                                <label for="customerPhone">Số Điện Thoại:</label>
+                                <input type="tel" id="customerPhone" placeholder="09xxxxxxxx" required>
+                            </div>
+                            <div>
+                                <label for="customerAddress">Địa Chỉ Nhận Hàng:</label>
+                                <textarea id="customerAddress" placeholder="Số nhà, đường, phường/xã, quận/huyện, tỉnh/thành phố" rows="3" required></textarea>
+                            </div>
+                            <div>
+                                <label for="paymentMethod">Phương Thức Thanh Toán:</label>
+                                <select id="paymentMethod">
+                                    <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                                    <option value="bank_transfer">Chuyển khoản ngân hàng</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" id="cartModalFooter">
+                 <button class="btn btn-outline" id="continueShoppingBtn">Tiếp tục mua sắm</button>
+                 <button class="btn btn-primary" id="checkoutBtn" style="display:none;"><i class="fas fa-credit-card"></i> Tiến Hành Đặt Hàng</button>
+            </div>
+            <div id="orderSuccessMsg">
+                <i class="fas fa-check-circle"></i>
+                <h3>Đặt Hàng Thành Công!</h3>
+                <p>Cảm ơn bạn đã mua sắm tại Shop. Chúng tôi sẽ xử lý đơn hàng của bạn sớm nhất.</p>
+                <p>Mã đơn hàng của bạn là: <strong id="orderSuccessId"></strong></p>
+                <button class="btn btn-secondary" id="closeSuccessMsgBtn" style="margin-top:1rem;">Tuyệt vời!</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4><i class="fas fa-gem"></i> SHOP</h4>
+                <p>Nơi bạn tìm thấy những xu hướng đồ thể thao mới nhất, chất lượng vượt trội và dịch vụ tận tâm. Khẳng định phong cách, tự tin tỏa sáng!</p>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-info-circle"></i> Thông Tin</h4>
+                <ul>
+                    <li><a href="#about-page" class="navigate-btn">Về Chúng Tôi</a></li>
+                    <li><a href="#contact-page" class="navigate-btn">Liên Hệ</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-headset"></i> Hỗ Trợ Khách Hàng</h4>
+                <p><i class="fas fa-phone-alt"></i> Hotline: <strong><a href="tel:0877706152" style="color:white;">0877 706 152</a></strong></p>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:letam1082003@gmail.com" style="color:white;">letam1082003@gmail.com</a></p>
+            </div>
+            <div class="footer-column">
+                <h4><i class="fas fa-envelope-open-text"></i> Bản Tin</h4>
+                <p>Đăng ký để nhận thông tin mới nhất về sản phẩm và khuyến mãi!</p>
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" id="newsletterEmail" placeholder="Nhập email của bạn..." required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <span id="currentYear"></span>  Developed </p>
+        </div>
+    </footer>
+
+    <!-- SCROLL TO TOP BUTTON -->
+    <button id="scrollToTopBtn" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="script.js"></script>
+</body>
+</html>
